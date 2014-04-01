@@ -7,8 +7,7 @@ var debug = require('debug')('parse-bandcamp-csv:test');
 var join = require('path').join;
 var parse = require('..');
 var fs = require('fs');
-var recordParser = require('csv-record-parser');
-var parserStream = require('csv-record-parser-stream');
+var record = require('csv-record-parser-stream');
 
 var file = process.env.BANDCAMP_TEST_CSV || join(__dirname, "bandcamp.csv")
 
@@ -24,7 +23,6 @@ describe('bandcamp csv parser', function(){
   });
 
   it('parses and types are ok', function(done){
-    var parser = recordParser();
     var first = true;
 
     csvFile(file, function(bandcamp){
@@ -53,7 +51,7 @@ describe('bandcamp csv parser', function(){
 function csvFile(file, rowFn, done) {
   fs.createReadStream(file)
   .pipe(csv())
-  .pipe(parserStream(recordParser(), parse))
+  .pipe(record(parse))
   .pipe(through(rowFn))
   .on('end', done);
 }

@@ -16,8 +16,7 @@
   "devDependencies": {
     "mocha": "*",
     "debug": "*",
-    "csv-record-parser": "*",
-    "csv-record-parser-stream": "*",
+    "csv-record-parser-stream": "0.0.2",
     "csv-parse": "*",
     "through": "*",
     "dev-null": "*",
