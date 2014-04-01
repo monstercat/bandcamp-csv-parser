@@ -3,6 +3,8 @@
 
   Parse bandcamp csv files using [csv-record-parser](https://github.com/jb55/csv-record-parser)
 
+  [![Build Status](https://travis-ci.org/monstercat/bandcamp-csv-parser.png)](https://travis-ci.org/monstercat/bandcamp-csv-parser)
+
 ## Installation
 
   Install with npm
