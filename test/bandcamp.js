@@ -54,5 +54,6 @@ function csvFile(file, rowFn, done) {
   fs.createReadStream(file)
   .pipe(csv())
   .pipe(parserStream(recordParser(), parse))
+  .pipe(through(rowFn))
   .on('end', done);
 }
