@@ -14,7 +14,6 @@
 ## Example
 
 ```js
-var parser = require('csv-record-parser')
 var record = require('csv-record-parser-stream')
 var bandcamp = require('bandcamp-csv-parser')
 var through = require('through');
@@ -22,7 +21,7 @@ var csv = require('csv-parser')
 
 fs.createReadStream("file.csv")
 .pipe(csv())
-.pipe(record(parser(), bandcamp))
+.pipe(record(bandcamp))
 .pipe(through(function(sale){
   // handle data
 }));
