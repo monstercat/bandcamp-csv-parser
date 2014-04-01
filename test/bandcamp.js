@@ -1,11 +1,14 @@
 
-var assert = require('better-assert')
-var devnull = require('dev-null')
-var csv = require('csv')
+var assert = require('better-assert');
+var devnull = require('dev-null');
+var csv = require('csv-parse');
+var through = require('through');
 var debug = require('debug')('parse-bandcamp-csv:test');
 var join = require('path').join;
 var parse = require('..');
+var fs = require('fs');
 var recordParser = require('csv-record-parser');
+var parserStream = require('csv-record-parser-stream');
 
 var file = process.env.BANDCAMP_TEST_CSV || join(__dirname, "bandcamp.csv")
 
@@ -24,15 +27,7 @@ describe('bandcamp csv parser', function(){
     var parser = recordParser();
     var first = true;
 
-    csvFile(file, function(row){
-      if (first) {
-        parser.header(row);
-        first = false;
-        return;
-      }
-      parser.row(row);
-      var bandcamp = parse(parser);
-
+    csvFile(file, function(bandcamp){
       debug("row %j", bandcamp);
       assert(bandcamp.itemName != null);
       assert(bandcamp.itemType != null);
@@ -49,17 +44,15 @@ describe('bandcamp csv parser', function(){
       assert(bandcamp.upc != null);
       assert(bandcamp.artist != null);
       assert(bandcamp.isrc != null);
-    }, function(){
-      done();
-    });
+
+      return bandcamp;
+    }, done);
   });
 });
 
 function csvFile(file, rowFn, done) {
-  return csv().from.path(file)
-  .to.stream(devnull())
-  .on('record', rowFn)
-  .on('end', function(){
-    done();
-  })
+  fs.createReadStream(file)
+  .pipe(csv())
+  .pipe(parserStream(recordParser(), parse))
+  .on('end', done);
 }

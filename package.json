@@ -1,9 +1,9 @@
 {
-  "name": "parse-bandcamp-csv",
+  "name": "bandcamp-csv-parser",
   "description": "Parse bandcamp csvs",
   "version": "0.0.1",
   "repository": {
-    "url": "git://github.com/monstercat/parse-bandcamp-csv.git"
+    "url": "git://github.com/monstercat/bandcamp-csv-parser.git"
   },
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,9 @@
     "mocha": "*",
     "debug": "*",
     "csv-record-parser": "*",
-    "csv": "*",
+    "csv-record-parser-stream": "*",
+    "csv-parse": "*",
+    "through": "*",
     "dev-null": "*",
     "better-assert": "*"
   }
