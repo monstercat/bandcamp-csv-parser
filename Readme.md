@@ -21,7 +21,7 @@ var csv = require('csv-parser')
 fs.createReadStream("file.csv")
 .pipe(csv())
 .pipe(record(parser(), bandcamp))
-.pipe(through(function(person){
+.pipe(through(function(sale){
   // handle data
 }));
 ```
