@@ -42,3 +42,15 @@ parsers.number = require('parse-number').str;
 parsers.paypal = function(str) {
   return def(str, 0);
 };
+
+function eq(str){
+  return function(item) { return item === str; };
+}
+
+parsers.identify = function(header) {
+  return header.some(eq("order date"))  &&
+         header.some(eq("buyer name"))  &&
+         header.some(eq("buyer email")) &&
+         header.some(eq("item type"))   &&
+         header.some(eq("item name"));
+};
