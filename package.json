@@ -10,13 +10,13 @@
     "test": "mocha --reporter spec --timeout 5000"
   },
   "dependencies": {
-    "parse-number": "0.0.4",
+    "parse-number": ">=1.0.0",
     "moment": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "debug": "*",
-    "csv-record-parser-stream": ">=0.0.2",
+    "csv-record-parser-stream": ">=0.0.3",
     "csv-parse": "*",
     "through": "*",
     "dev-null": "*",

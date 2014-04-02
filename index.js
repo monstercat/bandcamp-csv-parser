@@ -16,8 +16,8 @@ function or1(str, d) {
 
 var parsers = module.exports = function(csv) {
   var parsed = {};
-  parsed.itemName = csv.col('item name');
-  parsed.itemType = csv.col('item type');
+  parsed.name = csv.col('item name');
+  parsed.type = csv.col('item type');
   parsed.upc = csv.col('upc');
   parsed.isrc = csv.col('isrc');
   parsed.artist = csv.col('artist');
