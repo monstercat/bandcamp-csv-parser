@@ -27,10 +27,10 @@ describe('bandcamp csv parser', function(){
 
     csvFile(file, function(bandcamp){
       debug("row %j", bandcamp);
-      assert(bandcamp.itemName != null);
-      assert(bandcamp.itemType != null);
+      assert(bandcamp.name != null);
+      assert(bandcamp.type != null);
       assert(bandcamp.referrer != null);
-      assert(bandcamp.itemType === 'album' || bandcamp.itemType === 'track');
+      assert(bandcamp.type === 'album' || bandcamp.type === 'track');
       assert(bandcamp.sales != null);
       assert(bandcamp.sales >= 0);
       assert(bandcamp.orderDate != null);
