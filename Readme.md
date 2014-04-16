@@ -17,7 +17,7 @@
 var record = require('csv-record-parser-stream')
 var bandcamp = require('bandcamp-csv-parser')
 var through = require('through');
-var csv = require('csv-parser')
+var csv = require('csv-parse')
 
 fs.createReadStream("file.csv")
 .pipe(csv())
