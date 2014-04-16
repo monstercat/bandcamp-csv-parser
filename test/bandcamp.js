@@ -27,21 +27,7 @@ describe('bandcamp csv parser', function(){
 
     csvFile(file, function(bandcamp){
       debug("row %j", bandcamp);
-      assert(bandcamp.name != null);
-      assert(bandcamp.type != null);
-      assert(bandcamp.referrer != null);
-      assert(bandcamp.type === 'album' || bandcamp.type === 'track');
-      assert(bandcamp.sales != null);
-      assert(bandcamp.sales >= 0);
-      assert(bandcamp.orderDate != null);
-      assert(bandcamp.orderDate.getTime() < new Date().getTime());
-      assert(bandcamp.buyer != null);
-      assert(bandcamp.buyer.name != null);
-      assert(bandcamp.buyer.note != null);
-      assert(bandcamp.buyer.email != null);
-      assert(bandcamp.upc != null);
-      assert(bandcamp.artist != null);
-      assert(bandcamp.isrc != null);
+      parse.assert(bandcamp);
 
       return bandcamp;
     }, done);
@@ -52,7 +38,7 @@ describe('bandcamp csv parser', function(){
       var stream = fs.createReadStream(file)
       .pipe(csv())
       .pipe(through(function(header){
-        debug("identify header %j", header)
+        debug("identify header %j", header);
         assert(parse.identify(header) === true);
         stream.end();
         done();

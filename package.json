@@ -1,7 +1,7 @@
 {
   "name": "bandcamp-csv-parser",
   "description": "Parse bandcamp csvs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "url": "git://github.com/monstercat/bandcamp-csv-parser.git"
   },
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "parse-number": ">=1.0.0",
+    "better-assert": "*",
     "moment": "*"
   },
   "devDependencies": {
@@ -19,7 +20,6 @@
     "csv-record-parser-stream": ">=0.0.3",
     "csv-parse": "*",
     "through": "*",
-    "dev-null": "*",
-    "better-assert": "*"
+    "dev-null": "*"
   }
 }
