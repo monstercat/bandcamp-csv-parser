@@ -1,5 +1,6 @@
 
 var moment = require('moment');
+var assert = require('better-assert');
 
 function def(str, d) {
   var num = parsers.number(str);
