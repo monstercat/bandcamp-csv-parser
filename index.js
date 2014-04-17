@@ -46,8 +46,8 @@ parsers.assert = function(bandcamp) {
   assert(bandcamp.type === 'album' || bandcamp.type === 'track');
   assert(!isNaN(bandcamp.sales));
   assert(bandcamp.sales >= 0);
-  assert(bandcamp.orderDate != null);
-  assert(bandcamp.orderDate.getTime() < new Date().getTime());
+  assert(bandcamp.date != null);
+  assert(bandcamp.date.getTime() < new Date().getTime());
   assert(bandcamp.buyer != null);
   assert(bandcamp.buyer.name != null);
   assert(bandcamp.buyer.note != null);
