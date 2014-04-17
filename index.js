@@ -26,7 +26,7 @@ var parsers = module.exports = function(csv) {
   parsed.artist    = csv.col('artist');
   parsed.net       = parsers.number(csv.col('net amount'));
   parsed.sales     = parsers.number(or1(csv.col('quantity')));
-  parsed.orderDate = parsers.orderDate(csv.col('order date'));
+  parsed.date      = parsers.orderDate(csv.col('order date'));
   parsed.referrer  = csv.col('referrer url');
 
   parsed.buyer = {
